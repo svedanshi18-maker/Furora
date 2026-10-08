@@ -6,12 +6,20 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/furora?useSSL=false&serverTimezone=UTC";
+    private static final String HOST =
+            System.getenv("MYSQLHOST");
 
-    private static final String USER = "root";
+    private static final String PORT =
+            System.getenv("MYSQLPORT");
 
-    private static final String PASSWORD = "Vedu@123";
+    private static final String DATABASE =
+            System.getenv("MYSQLDATABASE");
+
+    private static final String USER =
+            System.getenv("MYSQLUSER");
+
+    private static final String PASSWORD =
+            System.getenv("MYSQLPASSWORD");
 
     public static Connection getConnection() throws SQLException {
 
@@ -21,6 +29,14 @@ public class DBConnection {
             throw new SQLException("MySQL JDBC Driver not found.", e);
         }
 
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        String url =
+                "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE +
+                        "?useSSL=false&serverTimezone=UTC";
+
+        return DriverManager.getConnection(
+                url,
+                USER,
+                PASSWORD
+        );
     }
 }
