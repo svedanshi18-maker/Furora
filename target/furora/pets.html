@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find a Pet - Furora</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf5;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #6b4f3a;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #444;
+            margin-left: 30px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #b06b3c;
+        }
+
+        .page-heading {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .page-heading h1 {
+            font-size: 44px;
+            color: #4b3621;
+            margin-bottom: 12px;
+        }
+
+        .page-heading p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .pets-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px 70px 70px;
+        }
+
+        .pet-card {
+            width: 280px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.09);
+            transition: transform 0.2s;
+        }
+
+        .pet-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .pet-image {
+            height: 210px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f7dfcb;
+            font-size: 100px;
+        }
+
+        .pet-info {
+            padding: 22px;
+        }
+
+        .pet-info h2 {
+            color: #4b3621;
+            margin-bottom: 8px;
+        }
+
+        .pet-info p {
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #b06b3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 22px;
+            font-weight: bold;
+        }
+
+        .view-btn:hover {
+            background: #8f512d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #4b3621;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Furora 🐾</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pets.html">Find a Pet</a>
+        <a href="#">About</a>
+        <a href="#">Login</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <h1>Find Your New Companion</h1>
+    <p>Every pet deserves a loving forever home.</p>
+</section>
+
+<section class="pets-container">
+
+    <div class="pet-card">
+        <div class="pet-image">🐶</div>
+
+        <div class="pet-info">
+            <h2>Buddy</h2>
+            <p><strong>Age:</strong> 2 years</p>
+            <p><strong>Breed:</strong> Golden Retriever</p>
+            <p><strong>Location:</strong> Prayagraj</p>
+
+            <a href="pet-details.html" class="view-btn">View Details</a>
+        </div>
+    </div>
+
+
+    <div class="pet-card">
+        <div class="pet-image">🐱</div>
+
+        <div class="pet-info">
+            <h2>Luna</h2>
+            <p><strong>Age:</strong> 1 year</p>
+            <p><strong>Breed:</strong> Persian Cat</p>
+            <p><strong>Location:</strong> Lucknow</p>
+
+            <a href="#" class="view-btn">View Details</a>
+        </div>
+    </div>
+
+
+    <div class="pet-card">
+        <div class="pet-image">🐕</div>
+
+        <div class="pet-info">
+            <h2>Max</h2>
+            <p><strong>Age:</strong> 3 years</p>
+            <p><strong>Breed:</strong> Labrador</p>
+            <p><strong>Location:</strong> Kanpur</p>
+
+            <a href="#" class="view-btn">View Details</a>
+        </div>
+    </div>
+
+
+    <div class="pet-card">
+        <div class="pet-image">🐰</div>
+
+        <div class="pet-info">
+            <h2>Coco</h2>
+            <p><strong>Age:</strong> 1 year</p>
+            <p><strong>Breed:</strong> Holland Lop</p>
+            <p><strong>Location:</strong> Delhi</p>
+
+            <a href="#" class="view-btn">View Details</a>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Furora | A New Beginning for Every Pet</p>
+</footer>
+
+</body>
+</html>
