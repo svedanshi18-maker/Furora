@@ -1,65 +1,97 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
 
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String role = request.getParameter("role");
+
+    if (role == null ||
+        !(role.equals("ADOPTER") ||
+          role.equals("SHELTER") ||
+          role.equals("ADMIN"))) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+
+    String roleTitle = "ADOPTER".equals(role) ? "Adopter"
+            : "SHELTER".equals(role) ? "Shelter"
+            : "Administrator";
+%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Login - Furora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= roleTitle %> Login - Furora</title>
 
     <style>
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f7f4ef;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f7f1e9;
+            color: #4b3024;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
         .login-container {
-            width: 380px;
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 400px;
+            background: #fffaf4;
+            padding: 36px;
+            border: 1px solid #e6d5c4;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(75, 48, 36, 0.10);
         }
 
         .logo {
             text-align: center;
             font-size: 32px;
             font-weight: bold;
-            color: #6b4f3a;
+            color: #70452f;
             margin-bottom: 8px;
         }
 
         .subtitle {
             text-align: center;
-            color: #777;
-            margin-bottom: 30px;
+            color: #806b5b;
+            margin-bottom: 26px;
+            line-height: 1.6;
+        }
+
+        .role {
+            background: #eee0d0;
+            color: #70452f;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
             margin-bottom: 7px;
-            font-weight: bold;
-            color: #444;
+            font-weight: 600;
+            color: #4b3024;
         }
 
         input {
             width: 100%;
-            box-sizing: border-box;
             padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
+            margin-bottom: 19px;
+            border: 1px solid #d9c6b4;
             border-radius: 8px;
             font-size: 15px;
+            background: white;
         }
 
         input:focus {
-            outline: none;
-            border-color: #6b4f3a;
+            outline: 2px solid #b17b53;
+            border-color: #70452f;
         }
 
         button {
@@ -67,76 +99,70 @@
             padding: 13px;
             border: none;
             border-radius: 8px;
-            background: #6b4f3a;
+            background: #70452f;
             color: white;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #543b2b;
-        }
+        button:hover { background: #523321; }
 
-        .register-text {
+        .register-text, .back {
             text-align: center;
             margin-top: 20px;
-            color: #666;
+            color: #806b5b;
+            font-size: 14px;
         }
 
-        .register-text a {
-            color: #6b4f3a;
-            text-decoration: none;
+        a {
+            color: #70452f;
             font-weight: bold;
+            text-decoration: none;
         }
+
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 
 <body>
-
 <div class="login-container">
-
     <div class="logo">🐾 Furora</div>
 
     <div class="subtitle">
         Welcome back! Login to continue.
     </div>
 
+    <div class="role"><%= roleTitle %> Login</div>
+
     <form action="login" method="post">
+        <input type="hidden" name="role" value="<%= role %>">
 
         <label for="email">Email</label>
-
-        <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-        >
+        <input type="email" id="email" name="email"
+               placeholder="Enter your email" required>
 
         <label for="password">Password</label>
+        <input type="password" id="password" name="password"
+               placeholder="Enter your password" required>
 
-        <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                required
-        >
-
-        <button type="submit">
-            Login
-        </button>
-
+        <button type="submit">Login</button>
     </form>
 
-    <div class="register-text">
-        Don't have an account?
-        <a href="register.jsp">Create Account</a>
+    <% if (!"ADMIN".equals(role)) { %>
+        <div class="register-text">
+            Don't have an account?
+            <a href="register.jsp?role=<%= role %>">Create Account</a>
+        </div>
+    <% } else { %>
+        <div class="register-text">
+            Administrator accounts are created privately.
+        </div>
+    <% } %>
+
+    <div class="back">
+        <a href="index.jsp">← Back to role selection</a>
     </div>
-
 </div>
-
 </body>
-
 </html>

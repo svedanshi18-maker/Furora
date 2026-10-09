@@ -32,6 +32,7 @@ com\furora\servlet\MyApplicationsServlet$Application.class
 com\furora\servlet\SendMessageServlet.class
 com\furora\servlet\PetDetailsServlet.class
 com\furora\servlet\AdminUsersServlet.class
+com\furora\servlet\RegisterServlet.class
 com\furora\model\Pet.class
 com\furora\servlet\ShelterApplicationsServlet$ShelterApplication.class
 com\furora\util\DBConnection.class
