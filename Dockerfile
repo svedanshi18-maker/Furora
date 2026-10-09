@@ -1,3 +1,4 @@
+
 FROM maven:3.9.11-eclipse-temurin-21 AS build
 
 WORKDIR /app
@@ -9,7 +10,6 @@ RUN mvn dependency:go-offline
 COPY src ./src
 
 RUN mvn clean package -DskipTests
-
 
 FROM tomcat:10.1-jdk21-temurin
 
